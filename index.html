@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Present</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #ffebcd;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        h1 {
+            font-size: 3em;
+            color: #ff69b4;
+            margin-bottom: 20px;
+        }
+        #buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 600px;
+        }
+        button {
+            background-color: #ffb6c1;
+            border: 2px solid #ff69b4;
+            border-radius: 10px;
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #ff69b4;
+        }
+        #surprise {
+            display: none;
+            background-color: #ffd700;
+            color: black;
+            border: 2px solid #ff8c00;
+            margin-top: 30px;
+            padding: 15px 30px;
+            font-size: 20px;
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 24px;
+            color: #ff69b4;
+        }
+        #video-container {
+            display: none;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Birthday Present!</h1>
+    <div id="buttons-container">
+        <script>
+            let clickedButtons = 0;
+
+            const giftMessages = [
+                "🎁 Message 1: Happy birthday didi !!!!!! Janamdin ki dher saari shubhkaamnaye aapko .. Tum jiyo hazaro saal mere laal",
+                "🎁 Message 2: I wish that you always stay happy and get all the things you wish to get in your life ",
+                "🎁 Message 3: दिन पर दिन तेरी खुशियां हो डबल, हो जाएं डिलीट जिंदगी से तुम्हारे सारे ट्रबल खुदा रखे तुम्हे हमेशा खुश और फिट, हो जन्मदिन तुम्हारा सुपर डुपर हिट। हैप्पी बर्थडे",
+            ];
+
+            function showMessage(buttonNum) {
+                const messageDiv = document.getElementById("message");
+                messageDiv.textContent = giftMessages[buttonNum - 1];
+                clickedButtons++;
+                if (clickedButtons === 3) {
+                    document.getElementById("surprise").style.display = "inline-block";
+                }
+            }
+
+            for (let i = 1; i <= 3; i++) {
+                const btn = document.createElement("button");
+                btn.textContent = "Message " + i;
+                btn.onclick = () => showMessage(i);
+                document.getElementById("buttons-container").appendChild(btn);
+            }
+        </script>
+    </div>
+    <div id="message"></div>
+    <button id="surprise" onclick="showVideo()">🎁 Open Your Big Present! 🎉</button>
+
+    <div id="video-container">
+        <iframe width="600" height="400" src="https://drive.google.com/file/d/1EoQApbFS9fCvWCZ7EXpOkTvEkUEYvenJ/preview" allow="autoplay" allowfullscreen></iframe>
+    </div>
+    
+
+    <script>
+        function showVideo() {
+            document.getElementById("video-container").style.display = "block";
+        }
+    </script>
+</body>
+</html>
